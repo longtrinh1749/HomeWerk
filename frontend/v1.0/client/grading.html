@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Grading</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="jquery-3.5.1.min.js"></script>
+    <style>
+        canvas {
+            background-color: lightblue;
+            width: 400;
+            height: 400;
+        }
+    </style>
+</head>
+
+<body onload="init()">
+    <!-- <canvas id="can" width="400" height="400" style="position:absolute;top:10%;left:10%;border:2px solid;"></canvas> -->
+    <div class="container-fluid">
+        <h3>Assignments</h3>
+        <div class="row">
+            <div class="col">
+                <table class="table table-hover text-center">
+                    <tbody id="work-list">
+                        <tr>
+                            <td><img src="imgs/Activity1.png" alt="Image 1" height="200"></td>
+                        </tr>
+                        <tr>
+                            <td><img src="imgs/Activity2.png" alt="Image 2" height="200"></td>
+                        </tr>
+                        <tr>
+                            <td><img src="imgs/Usecase.png" alt="Image 3" height="200"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-7">
+                <canvas id="can" width="620" height="520" style="top:10%;left:10%;border:2px solid;"></canvas>
+            </div>
+            <div class="col text-center">
+                <button id="btnTrue" type="button" class="btn btn-outline-success m-2">True</button><br>
+                <button id="btnFalse" type="button" class="btn btn-outline-danger m-2">False</button><br>
+                <button id="btnComment" type="button" class="btn btn-outline-dark m-2">Comment</button><br>
+                <input id="comment" type="text" class="form-control">
+                <input class="btn btn-primary mt-5" type="submit" value="Submit"><br>
+                <input id="btnUndo" class="btn btn-primary m-2" type="button" value="Undo">
+                <input id="btnRedo" class="btn btn-primary m-2" type="button" value="Redo">
+                <input id="btnReset" class="btn btn-primary m-2" type="reset" value="Reset">
+            </div>
+        </div>
+    </div>
+    <script src="canvasEditor.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Image to use:</p>
+
+<img id="scream" width="220" height="277"
+src="imgs/Usecase.png" alt="The Scream">
+
+<p>Canvas:</p>
+
+<canvas id="myCanvas" width="1000" height="1000"
+style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script>
+window.onload = function() {
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    var img = new Image();
+    img.src = "imgs/Usecase.png"
+   ctx.drawImage(img, 10, 10);
+};
+</script>
+
+</body>
+</html>

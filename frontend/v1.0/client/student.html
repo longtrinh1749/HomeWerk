@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Student Assignments</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="student.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h3>Assignments</h3>
+        <div class="row">
+            <div class="col-3">
+                <table class="table table-hover">
+                    <tbody id="assignment-list">
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <div class="container border p-3">
+                    <p>
+                    <h5 id="assignment-name">Title</h5>
+                    <div id="due">Due 11 October 2021 10:15<br></div>
+                    <div><b>Instructions</b><br></div>
+                    <div class="detail"><em>None</em></div>
+                    </p>
+                    <form action="http://localhost:5000/students/1/assignments/1/submit" method="post"
+                        enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="file">Choose files:</label><br>
+                            <input type="file" id="files" name="files[]" multiple accept="image/*"><br />
+                            <div id="selectedFiles"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="container border p-3">
+                    <p>
+                    <h5>Submitted work</h5>
+                    <em>Scores: </em><b id="score">100</b>
+                    </p>
+                    <div>
+                        <img src="imgs/Activity1.png" alt="Image 1" height="200">
+                        <img src="imgs/Activity2.png" alt="Image 1" height="200">
+                        <img src="imgs/Usecase.png" alt="Image 1" height="200">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var selDiv = "";
+
+        document.addEventListener("DOMContentLoaded", init, false);
+
+        function init() {
+            document.querySelector('#files').addEventListener('change', handleFileSelect, false);
+            selDiv = document.querySelector("#selectedFiles");
+        }
+
+        function handleFileSelect(e) {
+
+            if (!e.target.files || !window.FileReader) return;
+
+            selDiv.innerHTML = "";
+
+            var files = e.target.files;
+            var filesArr = Array.prototype.slice.call(files);
+            filesArr.forEach(function (f) {
+                if (!f.type.match("image.*")) {
+                    return;
+                }
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var html = "<img src=\"" + e.target.result + "\" width=\"150\">" + f.name + "<br clear=\"left\"/>";
+                    selDiv.innerHTML += html;
+                }
+                reader.readAsDataURL(f);
+
+            });
+
+
+        }
+    </script>
+</body>
+
+</html>
